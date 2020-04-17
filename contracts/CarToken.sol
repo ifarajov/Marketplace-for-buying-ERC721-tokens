@@ -36,18 +36,13 @@ contract CarToken is Ownable, ERC721("CryptoCars", "CC") {
         _mint(address(this), carId);
         
     }
-    
-    
-
-    /// @notice Buy car
-    /// @param _carId TokenId
 
 
 
 
     
     function toSell(uint _carId) public onlyOwner {
-        // You can only sell your own ships
+        // You can only sell your own cars
         carsForSale.push(_carId);
         indexes[_carId] = carsForSale.length - 1;
 
