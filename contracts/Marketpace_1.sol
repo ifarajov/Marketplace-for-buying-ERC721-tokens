@@ -13,10 +13,7 @@ contract Marketplace_1 is ERC20 {
     address newCarToken = address(new CarToken());
     
 
-    /*function setSellerAddress(address _address) internal returns(address) {
-        sellerAddress = CarToken(_address);
-        return sellerAddress;
-    }*/
+   
 
     function buy(uint _carId) public {
         require(newCarToken != address(this),"You cannot buy own token");

@@ -39,31 +39,10 @@ contract CarToken is Ownable, ERC721("CryptoCars", "CC") {
     
     
 
-    /// @notice Buy spaceship
+    /// @notice Buy car
     /// @param _carId TokenId
 
-    /*function buySpaceship(uint _carId) public payable {
-        require(ownerOf(_carId) == address(this),"You can only buy the spaceships owned by this contract");
 
-        
-        require(msg.value >= spaceshipPrices[_carId],"Value sent should be at least the spaceship price");
-
-        // We approve the transfer directly to avoid creating two trx
-        // then we send the token to the sender
-        tokenApprovals[_carId] = msg.sender;
-        safeTransferFrom(address(this), msg.sender, _carId);
-
-        // Delete the token from the list of tokens for sale
-        uint256 replacer = carsForSale[carsForSale.length - 1];
-        uint256 pos = indexes[_carId];
-        carsForSale[pos] = replacer;
-        indexes[replacer] = pos;
-        carsForSale.length--;
-        
-        uint refund = msg.value - spaceshipPrices[_carId];
-        if (refund > 0)
-            msg.sender.transfer(refund);
-    }*/
 
 
     
@@ -77,10 +56,9 @@ contract CarToken is Ownable, ERC721("CryptoCars", "CC") {
     
     /// @param _carId Car Id
     function Selling(uint _carId) public {
-        //require(sales[carToSale[_carId]].owner == msg.sender);
+        
         safeTransferFrom(address(this), msg.sender, _carId);
-        //delete sales[carToSale[_carId]];
-        //delete carToSale[_carId]
+       
         
         // Delete the token from the list of tokens for sale
         uint256 replacer = carsForSale[carsForSale.length - 1];
